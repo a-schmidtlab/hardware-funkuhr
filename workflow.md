@@ -35,10 +35,11 @@ Empfehlung: Rev. A handlötbar, aber bereits mit Teilen, die der Bestücker füh
 | Analogsimulation | ngspice (in KiCad integriert oder standalone) |
 | Firmware | PlatformIO oder avr-gcc/Makefile; Host-Unit-Tests |
 | Versionierung | git (Mac und Linux Mint gleichermaßen) |
+| Automatische Dokumentationsprüfung | GitHub Actions mit markdownlint-cli2 bei Pushes und Pull Requests |
 
 ## Repo-Struktur
 
-```
+```text
 projekt/
 ├── docs/
 │   ├── workflow.md          # dieses Dokument

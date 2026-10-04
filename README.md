@@ -20,8 +20,8 @@ Details stehen im [Lastenheft](docs/lastenheft.md).
 |---|---|
 | 1. Lastenheft | freigegeben (v1.1, 2026-10-04) |
 | 2. Architektur | freigegeben (2026-10-04, [Architektur](docs/architektur.md)) |
-| 3. Schaltung (SKiDL) | in Arbeit |
-| 4. Simulation | – |
+| 3. Schaltung (SKiDL) | freigegeben (2026-10-04, [Schaltung](docs/schaltung.md)) |
+| 4. Simulation | als Nächstes |
 | 5. Prototyp | – |
 | 6. Layout | – |
 | 7. Fertigung | – |
@@ -42,6 +42,7 @@ fab/rev-a/       Fertigungsdaten und Bestellunterlagen Rev. A
 - [Lastenheft](docs/lastenheft.md): Was die Uhr können muss
 - [Workflow](docs/workflow.md): Phasen, Gates, Rollen, Werkzeuge
 - [Architektur](docs/architektur.md): Blockschaltbild, Spannungen, Pin- und Strombudget
+- [Schaltung](docs/schaltung.md): Blöcke, Rechnungen, Prüfergebnisse; dazu [Stückliste](docs/stueckliste.md) und [Pinbelegung](docs/schaltung-pinbelegung.md)
 - [Setup](docs/setup.md): Installation der Werkzeuge unter Linux Mint
 
 ## Werkzeuge

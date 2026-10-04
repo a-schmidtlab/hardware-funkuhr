@@ -4,3 +4,4 @@ __pycache__/
 *.erc
 *.log
 *_sklib.py
+*-erc.rpt

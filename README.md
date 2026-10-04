@@ -6,7 +6,7 @@ Das Projekt dient außerdem als Lernprojekt für einen halbautomatischen Konstru
 
 ## Eckdaten
 
-- Versorgung: eine 18650-Li-Ion-Zelle, wechselbar
+- Versorgung: eine 18650-Li-Ion-Zelle, wechselbar; optional externe 5 V über USB-C (ohne Laden)
 - Anzeige: LED-7-Segment, dauerhaft an, Ziffernhöhe 20–30 mm
 - Zeit: DCF77, freilaufend ≤ 1 s/Tag Abweichung
 - Fertigung: handlötbar, zweilagige Platine, Bauteile möglichst aus dem JLC-Basic-Katalog
@@ -18,9 +18,9 @@ Details stehen im [Lastenheft](docs/lastenheft.md).
 
 | Phase | Status |
 |---|---|
-| 1. Lastenheft | freigegeben (v1.0, 2026-10-04) |
-| 2. Architektur | als Nächstes |
-| 3. Schaltung (atopile) | – |
+| 1. Lastenheft | freigegeben (v1.1, 2026-10-04) |
+| 2. Architektur | freigegeben (2026-10-04, [Architektur](docs/architektur.md)) |
+| 3. Schaltung (atopile) | als Nächstes |
 | 4. Simulation | – |
 | 5. Prototyp | – |
 | 6. Layout | – |
@@ -41,6 +41,7 @@ fab/rev-a/       Fertigungsdaten und Bestellunterlagen Rev. A
 
 - [Lastenheft](docs/lastenheft.md): Was die Uhr können muss
 - [Workflow](docs/workflow.md): Phasen, Gates, Rollen, Werkzeuge
+- [Architektur](docs/architektur.md): Blockschaltbild, Spannungen, Pin- und Strombudget
 - [Setup](docs/setup.md): Installation der Werkzeuge unter Linux Mint
 
 ## Werkzeuge

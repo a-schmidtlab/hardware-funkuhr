@@ -1,6 +1,6 @@
 # Lastenheft – Akku-Funkuhr (Nachttisch)
 
-- Version: 1.0
+- Version: 1.1
 - Status: freigegeben (2026-10-04)
 
 ## 1. Zweck
@@ -38,6 +38,7 @@ Batteriebetriebene Tischuhr für den Nachttisch, die sich per DCF77 selbst stell
 | E3 | Akkulaufzeit pro Ladung ca. 1–4 Wochen (Schätzung für Option a, Verifikation in Phase 4) | muss |
 | E4 | Anzeige niedriger Akkuladung | nein |
 | E5 | Betrieb während des Ladens möglich | nein |
+| E6 | Externe 5-V-Versorgung als Bestückungsoption (Buchse nur bei Bedarf bestückt). Kein Netzteil im Gerät, der Akku wird dabei nicht geladen | kann |
 
 ## 5. Sicherheit
 
@@ -100,3 +101,10 @@ Nutzbare Energie: 18650 mit ca. 2500–3000 mAh nutzbar.
 - Kein WLAN/Bluetooth/NTP
 - Kein Netzbetrieb
 - Kein Gehäusedesign in Rev. A (nur Platinenmaße und Bohrungen)
+
+## 11. Änderungen
+
+| Version | Datum | Änderung |
+|---|---|---|
+| 1.0 | 2026-10-04 | Freigabe |
+| 1.1 | 2026-10-04 | E6 ergänzt: externe 5-V-Versorgung als Option, freigegeben |

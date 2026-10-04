@@ -135,5 +135,4 @@ Was folgt daraus, welche Risiken bleiben?
 > Arbeite nur diese Phase ab, halte Entscheidungen im Entscheidungslog fest
 > und stoppe am Gate mit einer Zusammenfassung dessen, was ich prüfen muss.
 
-
 HUMAN REVISION 04.10.2026 11:10 AS

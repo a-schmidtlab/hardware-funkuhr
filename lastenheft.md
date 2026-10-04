@@ -97,7 +97,6 @@ a) bevorzugt. Die Werte sind vor der Architekturphase grob geschätzt. Phase 4 v
 
 ## 10. Nicht-Ziele
 
-
 - Kein WLAN/Bluetooth/NTP
-- Kein Netzbetrieb 
+- Kein Netzbetrieb
 - Kein Gehäusedesign in Rev. A (nur Platinenmaße und Bohrungen)

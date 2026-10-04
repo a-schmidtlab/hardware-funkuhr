@@ -30,4 +30,4 @@ Installation und Pfade: [docs/setup.md](docs/setup.md). Kurz:
 - `kicad-cli`: KiCad 10
 - `freerouting --gui.enabled=false -de x.dsn -do x.ses`: ohne `--gui.enabled=false` öffnet sich die Oberfläche
 - `ngspice`: Version 42
-- Firmware-Werkzeuge sind noch nicht installiert. Sie kommen nach der Wahl des Mikrocontrollers (Phase 2).
+- `avr-gcc` 7.3, `avrdude` 7.1: für den ATmega328PB zusätzlich `-B $DFP/gcc/dev/atmega328pb -I $DFP/include` mit `DFP=~/.local/share/avr-dfp/ATmega_DFP-3.6.299` (Microchip Device Pack, siehe setup.md)

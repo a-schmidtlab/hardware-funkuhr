@@ -1,0 +1,39 @@
+* Bauteilmodelle Funkuhr, aus Datenblattwerten angepasst (Phase 4)
+*
+* Bewusst einfache Modelle (SPICE Level 1 bzw. Standarddiode), damit jede
+* Zahl auf einen Datenblattwert zurückführbar ist. Wo das Datenblatt
+* Höchstwerte nennt, sind die Modelle auf diese Höchstwerte angepasst
+* (= ungünstiger Fall).
+
+* --- LED Kingbright SC08-11SURKWA (Hyper-Rot), Datenblatt DSAM8560 V.3A ------
+* U_F = 1,85 V typ. / 2,35 V max. bei 10 mA; Kennlinie: ca. 1,64 V bei 1 mA,
+* ca. 1,99 V bei 20 mA.  Diode mit N = 2, RS = 10 Ohm:
+*   typ: 1,64 V @ 1 mA, 1,85 V @ 10 mA, 1,99 V @ 20 mA
+*   max: IS so verkleinert, dass U_F @ 10 mA = 2,35 V (+0,5 V)
+.model LED_TYP D (IS=1.98e-17 N=2 RS=10)
+.model LED_MAX D (IS=1.25e-21 N=2 RS=10)
+
+* --- Schottky BAT54, Datenblatt Vishay (Höchstwerte) ---------------------------
+* U_F max: 0,24 V @ 0,1 mA, 0,32 V @ 1 mA, 0,40 V @ 10 mA, 0,80 V @ 100 mA
+* Anpassung: N = 1,34 und IS aus 0,1–10 mA, RS = 3,2 Ohm aus dem 100-mA-Punkt
+* Sperrstrom: Datenblatt max. 2 uA @ 25 V → in der Schaltung als 2-MOhm-
+* Parallelwiderstand (ungünstiger Fall für das Gate von Q1)
+.model BAT54 D (IS=9.9e-8 N=1.34 RS=3.2 BV=30)
+
+* --- N-MOSFET AO3400A, Datenblatt AOS --------------------------------------------
+* V_GS(th) 0,65 / 1,05 / 1,45 V; R_DS(on) max 48 mOhm @ 2,5 V, 32 mOhm @ 4,5 V
+* Level 1 linear: R = RD + 1/(KP*(VGS-VTO)) mit KP = 25, RD = 20 mOhm
+* passt beide R_DS(on)-Höchstwerte bei VTO = 1,05 V.
+* Body-Diode: U_SD 0,7 V typ. @ 1 A → separate Diode DBODY.
+.model AO3400A_TYP NMOS (LEVEL=1 VTO=1.05 KP=25 RD=0.0204 IS=1e-20)
+.model AO3400A_MAX NMOS (LEVEL=1 VTO=1.45 KP=25 RD=0.0204 IS=1e-20)
+.model AO3400A_MIN NMOS (LEVEL=1 VTO=0.65 KP=25 RD=0.0204 IS=1e-20)
+
+* --- P-MOSFET AO3401A, Datenblatt AOS --------------------------------------------
+* V_GS(th) −0,5 / −0,9 / −1,3 V; R_DS(on) max 85 mOhm @ −2,5 V, 60 mOhm @ −4,5 V
+* Level 1: KP = 13,9, RD = 40 mOhm passt beide Höchstwerte bei VTO = −0,9 V
+.model AO3401A_TYP PMOS (LEVEL=1 VTO=-0.9 KP=13.9 RD=0.040 IS=1e-20)
+.model AO3401A_MAX PMOS (LEVEL=1 VTO=-1.3 KP=13.9 RD=0.040 IS=1e-20)
+
+* Body-Dioden beider MOSFETs: 0,7 V @ 1 A (typ.)
+.model DBODY D (IS=1.7e-12 N=1 RS=0.05)

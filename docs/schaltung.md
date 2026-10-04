@@ -76,9 +76,9 @@ Jede Blockdatei beginnt mit einer Skizze und den Datenblattwerten. Die Rechnunge
 1. **Automatischer Schaltplan schwer lesbar:** Er ist elektrisch korrekt, aber Bauteile und Beschriftungen überlappen sich. Für die Prüfung sind die Pintabellen und die Blockdateien maßgeblich. In KiCad lässt er sich von Hand ordnen.
 2. **Polung des Knopfzellenhalters:** Plus an Pad 1 ist die KiCad-Konvention. Das Datenblatt des Halters war nicht abrufbar, deshalb wird das in Phase 6 am echten Bauteil geprüft.
 3. **Footprint der Anzeige ist selbst erstellt** (nach Datenblatt-Zeichnung). Er wird in Phase 6 mit dem 1:1-Papierausdruck geprüft. Der Bildexport von Footprints mit `kicad-cli` funktioniert auf diesem System generell nicht.
-4. **Helligkeit im ungünstigsten Fall:** Kommen schwächste LED, ungünstigster MCU-Pin und leerer Akku zusammen, sind es 0,26 mA statt 0,3 mA. Das wird im Prototyp geprüft (Phase 5).
+4. **Helligkeit im ungünstigsten Fall:** Kommen schwächste LED, ungünstigster MCU-Pin und leerer Akku zusammen, sind es 0,26 mA statt 0,3 mA. Das wird im Prototyp geprüft (Phase 5). *Geklärt in Phase 4:* Die Simulation mit Datenblatt-Kennlinie ergibt 0,32 mA, siehe [sim/ergebnisse.md](../sim/ergebnisse.md).
 5. **Belegung am DCF-Modul selbst** ist nicht dokumentiert. Die Verdrahtung legen wir in Phase 5 am echten Modul fest.
-6. **5-V-Betrieb mit Last:** Bei hohem Strom fällt an D1 bis ca. 1 V ab. VSYS kann dann kurz unter die Akkuspannung sinken, und der Akku liefert über die interne Diode von Q1 mit. Laden ist dabei ausgeschlossen. Das prüft Phase 4.
+6. **5-V-Betrieb mit Last:** Bei hohem Strom fällt an D1 bis ca. 1 V ab. VSYS kann dann kurz unter die Akkuspannung sinken, und der Akku liefert über die interne Diode von Q1 mit. Laden ist dabei ausgeschlossen. Das prüft Phase 4. *Geklärt in Phase 4:* In keinem Fall fließt Ladestrom, siehe [sim/ergebnisse.md](../sim/ergebnisse.md), Abschnitt 2.
 7. **Halter 18650:** Keystone 1042. Es gibt auch die Variante 1042P mit mechanischem Verpolschutz. Das lässt sich in Phase 7 bei der Bestellung entscheiden, der Footprint ist derselbe.
 8. **Interner Fehler im Schaltplanzeichner von SKiDL 2.3:** Er scheitert gelegentlich mit einem internen Fehler. `funkuhr.py` versucht es dann mit anderem Startwert erneut. Netzliste und Dokumente betrifft das nicht.
 

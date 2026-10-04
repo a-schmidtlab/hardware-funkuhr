@@ -21,8 +21,8 @@ Details stehen im [Lastenheft](docs/lastenheft.md).
 | 1. Lastenheft | freigegeben (v1.1, 2026-10-04) |
 | 2. Architektur | freigegeben (2026-10-04, [Architektur](docs/architektur.md)) |
 | 3. Schaltung (SKiDL) | freigegeben (2026-10-04, [Schaltung](docs/schaltung.md)) |
-| 4. Simulation | als Nächstes |
-| 5. Prototyp | – |
+| 4. Simulation | freigegeben (2026-10-04, [Simulation](sim/README.md)) |
+| 5. Prototyp | als Nächstes |
 | 6. Layout | – |
 | 7. Fertigung | – |
 | 8. Inbetriebnahme | – |

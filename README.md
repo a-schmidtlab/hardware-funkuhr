@@ -2,7 +2,7 @@
 
 Akku-betriebene Nachttischuhr mit DCF77-Zeitsynchronisation und LED-7-Segment-Anzeige im Retro-Stil (HH:MM:SS).
 
-Das Projekt dient außerdem als Lernprojekt für einen halbautomatischen Konstruktionsworkflow: Die Schaltung wird als Code mit atopile geschrieben, Layout und Prüfung laufen in KiCad, Claude Code unterstützt bei Entwurf, Berechnung und Prüfung.
+Das Projekt dient außerdem als Lernprojekt für einen halbautomatischen Konstruktionsworkflow: Die Schaltung wird als Python-Code mit SKiDL geschrieben, Layout und Prüfung laufen in KiCad, Claude Code unterstützt bei Entwurf, Berechnung und Prüfung.
 
 ## Eckdaten
 
@@ -20,7 +20,7 @@ Details stehen im [Lastenheft](docs/lastenheft.md).
 |---|---|
 | 1. Lastenheft | freigegeben (v1.1, 2026-10-04) |
 | 2. Architektur | freigegeben (2026-10-04, [Architektur](docs/architektur.md)) |
-| 3. Schaltung (atopile) | als Nächstes |
+| 3. Schaltung (SKiDL) | in Arbeit |
 | 4. Simulation | – |
 | 5. Prototyp | – |
 | 6. Layout | – |
@@ -31,7 +31,7 @@ Details stehen im [Lastenheft](docs/lastenheft.md).
 
 ```text
 docs/            Lastenheft, Workflow, Setup, Entscheidungslog (decisions/)
-hw/              atopile-Projekt (Schaltung, Layout)
+hw/              Schaltung als Code (SKiDL), KiCad-Projekt, Layout
 sim/             ngspice-Simulationen und Ergebnisse
 fw/              Firmware und Host-Tests (tests/)
 fab/rev-a/       Fertigungsdaten und Bestellunterlagen Rev. A
@@ -46,4 +46,4 @@ fab/rev-a/       Fertigungsdaten und Bestellunterlagen Rev. A
 
 ## Werkzeuge
 
-atopile 0.15, KiCad 10, Freerouting 2.4, ngspice 42, KiCad-MCP-Server, git.
+SKiDL 2.3, KiCad 10, Freerouting 2.4, ngspice 42, avr-gcc/avrdude, KiCad-MCP-Server, git.

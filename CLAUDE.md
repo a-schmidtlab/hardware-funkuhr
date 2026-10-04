@@ -18,7 +18,7 @@
 
 - Nur die aktuelle Phase bearbeiten und am Gate mit einer Prüfliste für Axel stoppen. Ohne seine Freigabe nicht weitermachen.
 - Jede relevante Designentscheidung kommt nach `docs/decisions/NNN-titel.md`, nach der Vorlage in `workflow.md`.
-- Die Schaltung entsteht als atopile-Code in `hw/`, nicht im Schaltplan-Editor. KiCad dient zu Layout, Prüfung und Export.
+- Die Schaltung entsteht als SKiDL-Code (Python) in `hw/`, nicht im Schaltplan-Editor. atopile wird nicht mehr genutzt (Entscheidung 007). KiCad dient zu Layout, Prüfung und Export.
 - KiCad-MCP-Server (`kicad`) nur als Prüfwerkzeug nutzen (Netze, ERC/DRC, BOM), nicht zum Zeichnen.
 - Bezahlen bleibt manuell.
 
@@ -26,7 +26,7 @@
 
 Installation und Pfade: [docs/setup.md](docs/setup.md). Kurz:
 
-- `ato`: atopile 0.15 (Python 3.14 über uv)
+- SKiDL 2.3 + kinet2pcb in `hw/.venv` (System-Python mit `pcbnew`); Bauen mit `make` in `hw/`
 - `kicad-cli`: KiCad 10
 - `freerouting --gui.enabled=false -de x.dsn -do x.ses`: ohne `--gui.enabled=false` öffnet sich die Oberfläche
 - `ngspice`: Version 42

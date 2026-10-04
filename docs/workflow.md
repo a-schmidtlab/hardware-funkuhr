@@ -1,10 +1,10 @@
-# Entwicklungsworkflow Elektronik – Claude Code + atopile + KiCad
+# Entwicklungsworkflow Elektronik – Claude Code + SKiDL + KiCad
 
 Bezugsprojekt: DCF77-Funkuhr. Der Workflow ist projektunabhängig gedacht.
 
 ## Grundsätze
 
-- **Schaltung als Code.** Die Schaltung wird in atopile (`.ato`) beschrieben, nicht im Schaltplan-Editor gezeichnet. Sie liegt in git und ist diffbar und reviewbar.
+- **Schaltung als Code.** Die Schaltung wird in Python mit SKiDL beschrieben, nicht im Schaltplan-Editor gezeichnet. Sie liegt in git und ist diffbar und reviewbar. Ursprünglich war atopile vorgesehen, den Grund für den Wechsel nennt Entscheidung 007.
 - **Rollen:**
   - **Du:** Anforderungen, Randbedingungen, Review, Freigaben.
   - **Claude Code:** Entwurf, Berechnung, Simulation, Firmware, Exporte.
@@ -28,7 +28,7 @@ Empfehlung: Rev. A handlötbar, aber bereits mit Teilen, die der Bestücker füh
 
 | Zweck | Werkzeug |
 |---|---|
-| Schaltung | atopile (VS-Code-/Cursor-Extension + CLI `ato`) |
+| Schaltung | SKiDL (Python) → Netzliste und KiCad-Schaltplan; `kinet2pcb` für die erste Platinendatei |
 | Layout, ERC/DRC, Export | KiCad 10 |
 | Routing | Freerouting (KiCad-Plugin) |
 | Prüfung durch Claude | KiCad-MCP-Server (z. B. Seeed-Studio `kicad-mcp-server`) |
@@ -44,7 +44,7 @@ projekt/
 │   ├── workflow.md          # dieses Dokument
 │   ├── lastenheft.md
 │   └── decisions/           # Entscheidungslog, eine Datei pro Entscheidung
-├── hw/                      # atopile-Projekt (ato.yaml, *.ato, layouts/)
+├── hw/                      # SKiDL-Schaltung (*.py, Makefile), KiCad-Projekt, build/ (erzeugt)
 ├── sim/                     # ngspice-Netzlisten und Ergebnisse
 ├── fw/                      # Firmware + tests/
 └── fab/
@@ -65,10 +65,10 @@ projekt/
 - **Ergebnis:** Blockdiagramm und Einträge im Entscheidungslog.
 - **Gate:** Du verstehst und akzeptierst jede Hauptkomponente einschließlich Datenblatt-Kernwerten.
 
-### 3. Schaltung (atopile)
+### 3. Schaltung (SKiDL)
 
-- **Inhalt:** Module pro Block, Constraints (Spannungen, Toleranzen), Teileauswahl durch den Compiler, Bauteilberechnungen (Vorwiderstände, Basisströme, Verlustleistung) als Kommentar bzw. Constraint.
-- **Prüfung:** `ato build`, ERC, Netz-Review per MCP.
+- **Inhalt:** eine Python-Funktion (Subcircuit) pro Block. Jedes Bauteil mit Symbol, Footprint, Wert und Bestellnummer. Bauteilberechnungen (Vorwiderstände, Basisströme, Verlustleistung) als Rechnung im Code, Grenzwerte als `assert`.
+- **Prüfung:** `make` in `hw/` (SKiDL-ERC, KiCad-ERC, Schaltplan-PDF), Pin- und Netztabelle je IC, Netz-Review per MCP.
 - **Gate:** Du reviewst den Code und den generierten Schaltplan. Mindestens prüfst du: Polaritäten, Pinbelegungen gegen Datenblatt, Versorgung jedes ICs, Abblockkondensatoren.
 
 ### 4. Simulation

@@ -10,8 +10,9 @@ Vorher schon vorhanden: git, VS Code mit Claude-Code-Erweiterung, Python 3.12, `
 |---|---|---|---|
 | KiCad (inkl. Symbole, Footprints, 3D) | 10.0.6 | PPA `kicad/kicad-10.0-releases` | System |
 | ngspice | 42 | Ubuntu-Paket | System |
-| atopile (`ato`) | 0.15.9 | `uv tool` mit Python 3.14 | `~/.local/bin/ato` |
-| atopile-Erweiterung für VS Code | 0.15.9 | VS Code Marketplace | VS Code |
+| SKiDL | 2.3.0 | PyPI (pip) | `hw/.venv/` |
+| kinet2pcb | 1.1.4 | PyPI (pip) | `hw/.venv/` |
+| atopile (`ato`), nicht mehr genutzt | 0.15.9 | `uv tool` mit Python 3.14 | `~/.local/bin/ato` |
 | Java 25 (für Freerouting) | 25.0.4 | Ubuntu-Paket `openjdk-25-jre` | System |
 | Freerouting | 2.4.1 | GitHub-Release (`.jar`) | `~/tools/freerouting/` |
 | KiCad-MCP-Server (Seeed-Studio) | git `main` | GitHub | `~/tools/kicad-mcp-server/` |
@@ -40,17 +41,22 @@ ngspice --version            # ngspice-42
 python3 -c "import pcbnew; print(pcbnew.Version())"
 ```
 
-## 2. atopile
+## 2. SKiDL (Schaltung als Code)
+
+SKiDL beschreibt die Schaltung in Python und erzeugt daraus Netzliste und KiCad-Schaltplan. `kinet2pcb` macht aus der Netzliste eine erste Platinendatei. Beide laufen in einer eigenen Python-Umgebung im Projekt. Sie nutzt das System-Python 3.12, weil nur dieses KiCads Modul `pcbnew` sieht.
 
 ```bash
-uv tool install --python 3.14 atopile
-code --install-extension atopile.atopile
-ato --version                # 0.15.9
+cd hw
+/usr/bin/python3 -m venv --system-site-packages .venv
+.venv/bin/pip install -r requirements.txt
+make                         # Netzliste, Schaltplan, ERC, PDF nach hw/build/
 ```
 
-**Wichtig:** atopile ab 0.15 verlangt Python 3.14. Ohne `--python 3.14` nimmt `uv` das System-Python 3.12 und installiert die veraltete Version 0.2.x, ohne zu warnen. Das Python 3.14 lädt `uv` selbst herunter. Ubuntu 24.04 hat kein Python 3.14 in seinen Paketquellen.
+- Die Versionen stehen fest in `hw/requirements.txt`.
+- SKiDL findet die KiCad-Bibliotheken über `KICAD10_SYMBOL_DIR` und `KICAD10_FOOTPRINT_DIR`. Das `Makefile` setzt beide.
+- `hw/fp-lib-table` und `hw/sym-lib-table` sind Kopien der KiCad-Vorlagen. Damit findet KiCad die Bibliotheken auch ohne globale Einrichtung.
 
-Aktualisieren: `uv tool upgrade atopile`
+**atopile** (früher vorgesehen) ist noch installiert, wird aber nicht mehr genutzt. Seit 0.15.8 verlangt es für die Bauteilauswahl eine Anmeldung beim Hersteller (siehe [Entscheidung 007](decisions/007-schaltungswerkzeug-skidl.md)). Deinstallieren: `uv tool uninstall atopile`
 
 ## 3. Freerouting
 

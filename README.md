@@ -22,7 +22,7 @@ Details stehen im [Lastenheft](docs/lastenheft.md).
 | 2. Architektur | freigegeben (2026-10-04, [Architektur](docs/architektur.md)) |
 | 3. Schaltung (SKiDL) | freigegeben (2026-10-04, [Schaltung](docs/schaltung.md)) |
 | 4. Simulation | freigegeben (2026-10-04, [Simulation](sim/README.md)) |
-| 5. Prototyp | als Nächstes |
+| 5. Prototyp | als Nächstes – Projekt pausiert seit 2026-10-05 ([Wiederaufnahme](docs/erkenntnisse.md#wiederaufnahme-so-geht-es-weiter)) |
 | 6. Layout | – |
 | 7. Fertigung | – |
 | 8. Inbetriebnahme | – |
@@ -40,10 +40,23 @@ fab/rev-a/       Fertigungsdaten und Bestellunterlagen Rev. A
 ## Dokumente
 
 - [Lastenheft](docs/lastenheft.md): Was die Uhr können muss
-- [Workflow](docs/workflow.md): Phasen, Gates, Rollen, Werkzeuge
+- [Electronics Workflow](docs/electronics-workflow.md): allgemeiner, projektunabhängiger Workflow (aus diesem Projekt entstanden)
+- [Workflow](docs/workflow.md): ursprünglicher Projekt-Workflow
+- [Erkenntnisse](docs/erkenntnisse.md): Learnings, Projektstand, Wiederaufnahme
 - [Architektur](docs/architektur.md): Blockschaltbild, Spannungen, Pin- und Strombudget
 - [Schaltung](docs/schaltung.md): Blöcke, Rechnungen, Prüfergebnisse; dazu [Stückliste](docs/stueckliste.md) und [Pinbelegung](docs/schaltung-pinbelegung.md)
 - [Setup](docs/setup.md): Installation der Werkzeuge unter Linux Mint
+- [Simulation](sim/README.md): Analogsimulation und Firmware-Tests (Phase 4)
+- [Entscheidungslog](docs/decisions/): Entscheidungen 001–009
+
+## Bauen und Prüfen
+
+```bash
+make -C hw          # Schaltung: Netzliste, KiCad-Schaltplan, ERC, PDF, Stückliste, Pintabellen
+make -C sim         # Analogsimulation (ngspice) -> sim/ergebnisse.md
+make -C fw test     # DCF77-Dekoder: Host-Tests
+make -C fw avr      # Testübersetzung für den ATmega328PB
+```
 
 ## Werkzeuge
 

@@ -137,6 +137,22 @@ avr-gcc -mmcu=atmega328pb -B $DFP/gcc/dev/atmega328pb -I $DFP/include -Os -o mai
 
 Prüfen: Ein Testprogramm, das `PORTE` schaltet, übersetzt ohne Fehler. `avrdude -p m328pb -c usbasp -n` erkennt den Chip. Ohne angeschlossenen Programmer meldet es „cannot find USB device“, das ist dann in Ordnung.
 
+## 6. Simulation und Firmware-Tests
+
+Keine zusätzliche Installation nötig: `sim/` nutzt das System-Python 3 und `ngspice`, `fw/` den System-`gcc` (mit AddressSanitizer/UBSan) und `avr-gcc`.
+
+```bash
+make -C sim         # -> sim/ergebnisse.md, bricht bei verletzter Anforderung ab
+make -C fw test     # Host-Tests DCF77-Dekoder
+make -C fw avr      # Übersetzung für ATmega328PB, zeigt die Größe
+```
+
+## Bekannte Werkzeugfehler (Stand 2026-10)
+
+- `kicad-cli fp export svg` scheitert auf diesem System bei jedem Footprint („Fehler beim Erstellen der SVG-Datei“), auch bei mitgelieferten. Footprints werden deshalb über die Platine bzw. den Papierausdruck geprüft.
+- SKiDL 2.3: Eigenheiten und Umgehungen stehen in [erkenntnisse.md](erkenntnisse.md), Abschnitt 4.
+- atopile 0.15.8+: Die Bauteilauswahl verlangt eine Anmeldung (Grund für [Entscheidung 007](decisions/007-schaltungswerkzeug-skidl.md)).
+
 ## Noch nicht installiert
 
 - **ISP-Programmer:** vorhanden, Typ noch festzuhalten. Er wird für den Prototyp in Phase 5 gebraucht. Unter Linux braucht er eventuell eine udev-Regel, damit `avrdude` ohne `sudo` darauf zugreifen darf. Das wird beim ersten Anschließen geprüft.

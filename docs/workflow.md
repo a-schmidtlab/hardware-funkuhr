@@ -1,5 +1,7 @@
 # Entwicklungsworkflow Elektronik – Claude Code + SKiDL + KiCad
 
+> **Hinweis (2026-10-05):** Dies ist der ursprüngliche Projekt-Workflow, nach dem Phase 1–4 bearbeitet wurden. Die weiterentwickelte, projektunabhängige Fassung mit allen Erkenntnissen ist [electronics-workflow.md](electronics-workflow.md). Für eine Wiederaufnahme des Projekts gilt diese neue Fassung.
+
 Bezugsprojekt: DCF77-Funkuhr. Der Workflow ist projektunabhängig gedacht.
 
 ## Grundsätze
